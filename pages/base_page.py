@@ -1,5 +1,6 @@
 from selenium.common.exceptions import NoSuchElementException
 
+
 class BasePage():
     def __init__(self, driver, url, timeout=10):
         self.driver = driver
