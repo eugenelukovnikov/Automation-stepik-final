@@ -16,7 +16,5 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-
-
 os_name = platform.system()
 CMD_CTRL = Keys.COMMAND if os_name == "Darwin" else Keys.CONTROL
