@@ -2,6 +2,8 @@
 class BasePageLocators():
     LOGIN_LINK = ('xpath', "//a[@id='login_link']")
     LOGIN_LINK_INVALID = ('xpath', "//a[@id='login_link_inc']")
+    BASKET_LINK = ('xpath', "//span[@class='btn-group']//a[contains(@class,'btn-default')]")
+
 
 class MainPageLocators():
     pass
@@ -10,6 +12,11 @@ class MainPageLocators():
 class LoginPageLocators():
     LOGIN_FORM = ('xpath', "//form[@id='login_form']")
     REGISTER_FORM = ('xpath', "//form[@id='register_form']")
+
+
+class BasketPageLocators():
+    EMPTY_BASKET_TEXT = ('xpath', "//div[@id='content_inner']/p")
+    BASKET_TABLE = ('xpath', "//form[@id='basket_formset']")
 
 
 class ProductPageLocators():

@@ -1,6 +1,7 @@
 from settings import *
 
 from pages.product_page import ProductPage
+from pages.basket_page import BasketPage
 
 
 # def test_guest_can_add_product_to_basket(driver):
@@ -41,7 +42,7 @@ from pages.product_page import ProductPage
 #     page.name_in_alert_should_be_equal_to_item_name()
 #     page.basket_price_in_alert_should_be_equal_to_item_price()
 
-@pytest.mark.skip
+@pytest.mark.skip #xfail
 def test_guest_cant_see_success_message_after_adding_product_to_basket(driver): 
     page = ProductPage(driver)
     page.open()
@@ -55,7 +56,7 @@ def test_guest_cant_see_success_message(driver):
     page.open()
     page.should_not_be_success_message()
     
-@pytest.mark.skip
+@pytest.mark.skip #xfail
 def test_message_disappeared_after_adding_product_to_basket(driver): 
     page = ProductPage(driver)
     page.open()
@@ -63,12 +64,32 @@ def test_message_disappeared_after_adding_product_to_basket(driver):
     page.add_to_basket()
     page.success_message_should_disappear()
 
+@pytest.mark.skip
 def test_guest_should_see_login_link_on_product_page(driver):
-    page = ProductPage(driver, 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/')
+    page = ProductPage(driver)
     page.open()
     page.should_be_login_link()
 
+@pytest.mark.skip
 def test_guest_can_go_to_login_page_from_product_page(driver):
-    page = ProductPage(driver, 'http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/')
+    page = ProductPage(driver)
     page.open()
     page.go_to_login_page()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(driver):
+    page = ProductPage(driver)
+    page.open()
+    page.go_to_basket_page()
+    basket_page = BasketPage(driver, driver.current_url)
+    basket_page.should_not_be_products_on_page()
+    basket_page.should_be_empty_basket_text()
+
+@pytest.mark.xfail
+def test_guest_can_see_product_in_basket_after_adding_from_product_page(driver):
+    page = ProductPage(driver)
+    page.open()
+    page.add_to_basket()
+    page.go_to_basket_page()
+    basket_page = BasketPage(driver, driver.current_url)
+    basket_page.should_not_be_products_on_page()
+    basket_page.should_be_empty_basket_text()
