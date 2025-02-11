@@ -1,13 +1,14 @@
+from settings import *
+
 from .base_page import BasePage
 from .locators import ProductPageLocators
-import time
 
 
 
 
 class ProductPage(BasePage): 
     
-    PRODUCT_PAGE_URL = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=newYear2019"
+    PRODUCT_PAGE_URL = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 
     def __init__(self, driver, url=PRODUCT_PAGE_URL):
         super().__init__(driver, url)
@@ -31,4 +32,8 @@ class ProductPage(BasePage):
         third_alert_basket_price = self.driver.find_element(*ProductPageLocators.THIRD_ALERT_BASKET_PRICE).text
         assert product_price == third_alert_basket_price, f"Product price {product_price} and price in the message {third_alert_basket_price} don't match"
 
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is presented, but should not be"
 
+    def success_message_should_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), "Success message is not disappeared, but should"
