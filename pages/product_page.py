@@ -1,5 +1,4 @@
 from settings import *
-
 from .base_page import BasePage
 from .locators import ProductPageLocators
 
@@ -13,7 +12,6 @@ class ProductPage(BasePage):
     def __init__(self, driver, url=PRODUCT_PAGE_URL):
         super().__init__(driver, url)
 
-    
     def add_to_basket(self):
         add_button = self.driver.find_element(*ProductPageLocators.BTN_ADD_TO_BASKET)
         add_button.click()
@@ -22,8 +20,9 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.BTN_ADD_TO_BASKET), "Add button is not presented"
     
     def name_in_alert_should_be_equal_to_item_name(self):
+        assert self.is_element_present(*ProductPageLocators.PRODUCT_NAME), "Product name is not presented, but should"
+        assert self.is_element_present(*ProductPageLocators.FIRST_ALERT_NAME), "First alert is not presented, but should"
         product_name = self.driver.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        time.sleep(5)
         name_in_first_alert = self.driver.find_element(*ProductPageLocators.FIRST_ALERT_NAME).text
         assert product_name == name_in_first_alert, f"Product name {product_name} and name in the message {name_in_first_alert} don't match"
 

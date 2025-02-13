@@ -5,7 +5,8 @@ import platform
 import math
 import pytest
 
-#from faker import Faker
+from selenium.common.exceptions import *
+from faker import Faker
 from selenium import webdriver
 
 
@@ -18,3 +19,5 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 os_name = platform.system()
 CMD_CTRL = Keys.COMMAND if os_name == "Darwin" else Keys.CONTROL
+
+fake = Faker()

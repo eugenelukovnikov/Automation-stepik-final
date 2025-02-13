@@ -1,5 +1,4 @@
 from settings import *
-
 from .base_page import BasePage
 from .locators import BasketPageLocators
 
