@@ -5,6 +5,10 @@ import pytest
 from selenium import webdriver
 
 
+@pytest.hookimpl(tryfirst=True)
+def pytest_configure(config):
+    config.option.allure_report_dir = "allure-results"
+
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
                      help="Choose browser: chrome or firefox")

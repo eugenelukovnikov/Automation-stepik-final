@@ -4,6 +4,7 @@ import os
 import platform
 import math
 import pytest
+import allure
 
 from selenium.common.exceptions import *
 from faker import Faker
