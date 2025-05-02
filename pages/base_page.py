@@ -1,7 +1,7 @@
 from settings import *
 # from selenium.common.exceptions import NoSuchElementException
 # from selenium.common.exceptions import NoAlertPresentException
-from .locators import BasePageLocators
+from pages.locators import BasePageLocators
 
 
 class BasePage():

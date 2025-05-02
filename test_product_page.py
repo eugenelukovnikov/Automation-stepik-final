@@ -3,6 +3,7 @@ from pages.product_page import ProductPage
 from pages.basket_page import BasketPage
 from pages.login_page import LoginPage
 
+@pytest.mark.skip
 @pytest.mark.parametrize("offer", [
     pytest.param(0, id="offer_0"),
     pytest.param(1, id="offer_1"),
@@ -18,7 +19,6 @@ from pages.login_page import LoginPage
 @allure.feature("Карточка товара")
 @allure.story("Добавление товара в корзину - гость")
 @allure.title("Проверка успешного добавления товара в корзину")
-@pytest.mark.skip
 def test_guest_can_add_product_to_basket(driver, offer):
     link = (
         f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"

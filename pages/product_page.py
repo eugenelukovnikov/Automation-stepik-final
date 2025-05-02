@@ -1,8 +1,6 @@
 from settings import *
-from .base_page import BasePage
-from .locators import ProductPageLocators
-
-
+from pages.base_page import BasePage
+from pages.locators import ProductPageLocators
 
 
 class ProductPage(BasePage): 
